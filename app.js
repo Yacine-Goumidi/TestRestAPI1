@@ -70,6 +70,13 @@ app.put('/tasks/:id', (req, res) => {
     res.json({ message: 'Tâche mise à jour avec succès', task });
 });
 
+// Delete /tasks/:id → supprimer une tâche
+app.delete('/tasks/:id', (req, res) => {
+    const taskId = parseInt(req.params.id);
+    tasks = tasks.filter(task => task.id !== taskId);
+    res.json({message: 'Tache supprimée avec succès'});
+});
+
 // ===== LANCEMENT DU SERVEUR =====
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
